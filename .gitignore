@@ -1,0 +1,8 @@
+# audio test files
+*.mp3
+*.wav
+*.aac
+*.flac
+
+# .env files
+.env
