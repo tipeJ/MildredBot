@@ -29,6 +29,10 @@ async def play(ctx, name):
         if not is_file:
             await ctx.send("File not found")
         else:
+            # Check if there is already a voice channel
+            if ctx.voice_client is not None:
+                # Disconnect from the voice channel
+                await ctx.voice_client.disconnect()
             voice_channel = utils.get(ctx.guild.voice_channels, name='General')
             await voice_channel.connect()
             voice = utils.get(bot.voice_clients, guild=ctx.guild)
