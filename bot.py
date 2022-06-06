@@ -34,6 +34,18 @@ async def play(ctx, name):
             voice = utils.get(bot.voice_clients, guild=ctx.guild)
             await voice.play(discord.FFmpegPCMAudio(f'knallis/{audio_file[0]}'))
 
+# Pause the music
+@bot.command()
+async def pause(ctx):
+    voice = utils.get(bot.voice_clients, guild=ctx.guild)
+    voice.pause()
+
+# Resume the music
+@bot.command()
+async def resume(ctx):
+    voice = utils.get(bot.voice_clients, guild=ctx.guild)
+    voice.resume()
+
 # Leaves the voice channel
 @bot.command()
 async def leave(ctx):
