@@ -11,7 +11,8 @@ KNALLIS_DIRECTORY = os.environ.get('KNALLIS_DIRECTORY')
 
 bot = commands.Bot(command_prefix='!')
 # Scan file names in the directory
-audio_files = [f for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
+audio_files = [f[:-4] for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
+audio_files.sort()
 
 @bot.event
 async def on_ready():
