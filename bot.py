@@ -43,8 +43,8 @@ async def _playFile(ctx, file):
 # Plays a music file
 @bot.command()
 async def play(ctx, name):
-    # Find the matching audio file name
-    audio_file = [f for f in audio_files if f.__contains__(name)]
+    # Find the matching audio file name. Non-case-sensitive
+    audio_file = [f for f in audio_files if name.lower() in f.lower()]
     if len(audio_file) == 0:
         await ctx.send('No matching audio file found.')
     elif len(audio_file) > 1:
