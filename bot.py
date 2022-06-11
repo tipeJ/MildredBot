@@ -1,4 +1,5 @@
 import os
+from typing import Type
 import discord
 from discord import utils
 from dotenv import load_dotenv
@@ -62,13 +63,19 @@ async def rand(ctx):
 @bot.command()
 async def pause(ctx):
     voice = utils.get(bot.voice_clients, guild=ctx.guild)
-    voice.pause()
+    try:
+        voice.pause()
+    except AttributeError:
+        await ctx.send("ERROR: Nothing is playing")
 
 # Resume the music
 @bot.command()
 async def resume(ctx):
     voice = utils.get(bot.voice_clients, guild=ctx.guild)
-    voice.resume()
+    try:
+        voice.resume()
+    except AttributeError:
+        await ctx.send("ERROR: Nothing is playing")
 
 # Leaves the voice channel
 @bot.command()
