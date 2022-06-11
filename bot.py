@@ -7,17 +7,18 @@ import random
 
 load_dotenv()
 TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
+KNALLIS_DIRECTORY = os.environ.get('KNALLIS_DIRECTORY')
 
 bot = commands.Bot(command_prefix='!')
 # Scan file names in the 'knallis' subdirectory
-audio_files = [f for f in os.listdir('knallis') if f.endswith('.mp3')]
+audio_files = [f for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
 
 @bot.event
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
 async def _playFile(ctx, file):
-    path = f'knallis/{file}'
+    path = f'{KNALLIS_DIRECTORY}/{file}'
     is_file = os.path.isfile(path)
     if not is_file:
         await ctx.send("File not found")
@@ -26,8 +27,14 @@ async def _playFile(ctx, file):
         if ctx.voice_client is not None:
             # Disconnect from the voice channel
             await ctx.voice_client.disconnect()
-        voice_channel = utils.get(ctx.guild.voice_channels, name='General')
-        await voice_channel.connect()
+        # If user is in a voice channel, connect to it
+        if ctx.author.voice:
+            await ctx.author.voice.channel.connect()
+        # Otherwise, connect to General
+        else:
+            voice_channel = utils.get(ctx.guild.voice_channels, name='General')
+            await voice_channel.connect()
+        # Play the file 
         voice = utils.get(bot.voice_clients, guild=ctx.guild)
         await voice.play(discord.FFmpegPCMAudio(path))
 
