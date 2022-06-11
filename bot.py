@@ -19,7 +19,7 @@ async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
 async def _playFile(ctx, file):
-    path = f'{KNALLIS_DIRECTORY}/{file}'
+    path = f'{KNALLIS_DIRECTORY}/{file}.mp3'
     is_file = os.path.isfile(path)
     if not is_file:
         await ctx.send("File not found")
