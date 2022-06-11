@@ -3,6 +3,7 @@ import discord
 from discord import utils
 from dotenv import load_dotenv
 from discord.ext import commands
+import random
 
 load_dotenv()
 TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
@@ -15,6 +16,21 @@ audio_files = [f for f in os.listdir('knallis') if f.endswith('.mp3')]
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
+async def _playFile(ctx, file):
+    path = f'knallis/{file}'
+    is_file = os.path.isfile(path)
+    if not is_file:
+        await ctx.send("File not found")
+    else:
+        # Check if there is already a voice channel
+        if ctx.voice_client is not None:
+            # Disconnect from the voice channel
+            await ctx.voice_client.disconnect()
+        voice_channel = utils.get(ctx.guild.voice_channels, name='General')
+        await voice_channel.connect()
+        voice = utils.get(bot.voice_clients, guild=ctx.guild)
+        await voice.play(discord.FFmpegPCMAudio(path))
+
 # Plays a music file
 @bot.command()
 async def play(ctx, name):
@@ -25,18 +41,13 @@ async def play(ctx, name):
     elif len(audio_file) > 1:
         await ctx.send('Multiple matching audio files found: ' + ', '.join(audio_file))
     else:
-        is_file = os.path.isfile(f'knallis/{audio_file[0]}')
-        if not is_file:
-            await ctx.send("File not found")
-        else:
-            # Check if there is already a voice channel
-            if ctx.voice_client is not None:
-                # Disconnect from the voice channel
-                await ctx.voice_client.disconnect()
-            voice_channel = utils.get(ctx.guild.voice_channels, name='General')
-            await voice_channel.connect()
-            voice = utils.get(bot.voice_clients, guild=ctx.guild)
-            await voice.play(discord.FFmpegPCMAudio(f'knallis/{audio_file[0]}'))
+        await _playFile(ctx, audio_file[0])
+
+@bot.command()
+async def rand(ctx):
+    # Select random audio file
+    audio_file = audio_files[int(len(audio_files) * random.random())]
+    await _playFile(ctx, audio_file)
 
 # Pause the music
 @bot.command()
