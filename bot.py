@@ -77,4 +77,9 @@ async def leave(ctx):
     if voice and voice.is_connected():
         await voice.disconnect()
 
+# Lists the audio files
+@bot.command()
+async def list(ctx):
+    await ctx.send('\n'.join(audio_files))
+
 bot.run(TOKEN)
