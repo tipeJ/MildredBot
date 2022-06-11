@@ -10,7 +10,7 @@ TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
 KNALLIS_DIRECTORY = os.environ.get('KNALLIS_DIRECTORY')
 
 bot = commands.Bot(command_prefix='!')
-# Scan file names in the 'knallis' subdirectory
+# Scan file names in the directory
 audio_files = [f for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
 
 @bot.event
@@ -35,6 +35,7 @@ async def _playFile(ctx, file):
             voice_channel = utils.get(ctx.guild.voice_channels, name='General')
             await voice_channel.connect()
         # Play the file 
+        await ctx.send(f'Playing {file}')
         voice = utils.get(bot.voice_clients, guild=ctx.guild)
         await voice.play(discord.FFmpegPCMAudio(path))
 
