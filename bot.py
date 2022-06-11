@@ -22,7 +22,7 @@ async def _playFile(ctx, file):
     path = f'{KNALLIS_DIRECTORY}/{file}.mp3'
     is_file = os.path.isfile(path)
     if not is_file:
-        await ctx.send("File not found")
+        await ctx.send("ERROR: File not found")
     else:
         # Check if there is already a voice channel
         if ctx.voice_client is not None:
@@ -46,9 +46,9 @@ async def play(ctx, name):
     # Find the matching audio file name. Non-case-sensitive
     audio_file = [f for f in audio_files if name.lower() in f.lower()]
     if len(audio_file) == 0:
-        await ctx.send('No matching audio file found.')
+        await ctx.send('No matching episode found.')
     elif len(audio_file) > 1:
-        await ctx.send('Multiple matching audio files found: ' + ', '.join(audio_file))
+        await ctx.send('Multiple matching episodes found: ' + ', '.join(audio_file))
     else:
         await _playFile(ctx, audio_file[0])
 
