@@ -87,6 +87,6 @@ async def leave(ctx):
 # Lists the audio files
 @bot.command()
 async def list(ctx):
-    await ctx.send('\n'.join(audio_files))
+    await ctx.send('List of episodes:\n' + '\n'.join(audio_files))
 
 bot.run(TOKEN)
