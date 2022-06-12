@@ -49,7 +49,7 @@ async def play(ctx, name):
     if len(audio_file) == 0:
         await ctx.send('No matching episode found.')
     elif len(audio_file) > 1:
-        await ctx.send('Multiple matching episodes found: ' + ', '.join(audio_file))
+        await ctx.send('Multiple matching episodes found:\n' + ',\n'.join(audio_file))
     else:
         await _playFile(ctx, audio_file[0])
 
