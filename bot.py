@@ -89,4 +89,18 @@ async def leave(ctx):
 async def list(ctx):
     await ctx.send('List of episodes:\n' + '\n'.join(audio_files))
 
+# Sends the given file to the user
+# TODO: Find alternative way of sending, as audio files exceed the maximum allowed by discord.
+@bot.command()
+async def download(ctx, name):
+    # Find the matching audio file name. Non-case-sensitive
+    audio_file = [f for f in audio_files if name.lower() in f.lower()]
+    if len(audio_file) == 0:
+        await ctx.send('No matching episode found.')
+    elif len(audio_file) > 1:
+        await ctx.send('Multiple matching episodes found:\n' + ',\n'.join(audio_file))
+    else:
+        # Send the file as a private message to the user
+        await ctx.author.send(file=discord.File(f'{KNALLIS_DIRECTORY}/{audio_file[0]}.mp3'))
+
 bot.run(TOKEN)
