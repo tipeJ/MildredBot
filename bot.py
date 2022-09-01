@@ -5,6 +5,7 @@ from discord import utils
 from dotenv import load_dotenv
 from discord.ext import commands
 import random
+import requests
 
 load_dotenv()
 TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
@@ -104,7 +105,21 @@ async def download(ctx, name):
     elif len(audio_file) > 1:
         await ctx.send('Multiple matching episodes found:\n' + ',\n'.join(audio_file))
     else:
-        # Send the file as a private message to the user
-        await ctx.author.send(file=discord.File(f'{KNALLIS_DIRECTORY}/{audio_file[0]}.mp3'))
+        # ! Discord API limit: File size is limited to 8MB, which is not enough to cover k&s episodes, as they range from 30 to 50MB.
+        # Upload the file to file.io
+        path = f'{KNALLIS_DIRECTORY}/{audio_file[0]}.mp3'
+        is_file = os.path.isfile(path)
+        if is_file:
+            # Make a POST request to file.io
+            upload_url = 'https://file.io'
+            data = {
+                'file': open(path, 'rb'),
+            }
+            response = requests.post(upload_url, files=data)
+            res = response.json()
+            if res['success']:
+                await ctx.author.send(f'Here is your file: {res["link"]}')
+            else:
+                await ctx.send('ERROR: File upload failed!')
 
 bot.run(TOKEN)
