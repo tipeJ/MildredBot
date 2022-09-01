@@ -10,7 +10,7 @@ load_dotenv()
 TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
 KNALLIS_DIRECTORY = os.environ.get('KNALLIS_DIRECTORY')
 
-bot = commands.Bot(command_prefix='!')
+bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 # Scan file names in the directory
 audio_files = [f[:-4] for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
 audio_files.sort()
@@ -30,16 +30,20 @@ async def _playFile(ctx, file):
             # Disconnect from the voice channel
             await ctx.voice_client.disconnect()
         # If user is in a voice channel, connect to it
-        if ctx.author.voice:
-            await ctx.author.voice.channel.connect()
-        # Otherwise, connect to General
+        # Check if author is User or not
+        if not isinstance(ctx.author, discord.User):
+            if ctx.author.voice:
+                await ctx.author.voice.channel.connect()
+            # Otherwise, connect to General
+            else:
+                voice_channel = utils.get(ctx.guild.voice_channels, name='General')
+                await voice_channel.connect()
+            # Play the file 
+            await ctx.send(f'Playing {file}')
+            voice = utils.get(bot.voice_clients, guild=ctx.guild)
+            await voice.play(discord.FFmpegPCMAudio(path))
         else:
-            voice_channel = utils.get(ctx.guild.voice_channels, name='General')
-            await voice_channel.connect()
-        # Play the file 
-        await ctx.send(f'Playing {file}')
-        voice = utils.get(bot.voice_clients, guild=ctx.guild)
-        await voice.play(discord.FFmpegPCMAudio(path))
+            await ctx.send("ERROR: You are not in a voice channel")
 
 # Plays a music file
 @bot.command()
