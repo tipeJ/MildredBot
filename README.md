@@ -12,4 +12,5 @@ MildredBot is a bot designed to play Knalli & Sateenvarjo (A popular finnish rad
 
 # Build
 1. Install required packages (List TBA)
-2. Specify .env file containing variables: 1.DISCORD_OAUTH_TOKEN and 2.KNALLIS_DIRECTORY, for discord API token and the directory where the episodes are stored.
+2. Install FFMPEG
+3. Specify .env file containing variables: 1.DISCORD_OAUTH_TOKEN and 2.KNALLIS_DIRECTORY, for discord API token and the directory where the episodes are stored.
