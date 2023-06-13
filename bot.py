@@ -11,6 +11,7 @@ import requests
 load_dotenv()
 TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
 KNALLIS_DIRECTORY = os.environ.get('KNALLIS_DIRECTORY')
+FILES_LOCATION = os.environ.get('FILES_LOCATION')
 
 playback_started_millis = None
 playback_ended_millis = None
@@ -124,7 +125,7 @@ async def join(ctx):
 @bot.command()
 async def list(ctx):
     # Send txt file 'files.txt' to the chat as an attachment
-    file = discord.File('files.txt')
+    file = discord.File(FILES_LOCATION)
     await ctx.send(file=file)
 
 # Sends the given file to the user
