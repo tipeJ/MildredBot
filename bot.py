@@ -122,4 +122,18 @@ async def download(ctx, name):
             else:
                 await ctx.send('ERROR: File upload failed!')
 
+# Lists commands and what they do
+@bot.command()
+async def commands(ctx):
+    await ctx.send('List of commands:\n' + '\n'.join([
+        '!play [name] - Plays the given episode',
+        '!rand - Plays a random episode',
+        '!pause - Pauses the playback',
+        '!resume - Resumes the playback',
+        '!leave - Leaves the voice channel, stopping playback',
+        '!join - Joins the current voice channel, resuming playback',
+        '!list - Lists all episodes',
+        '!download [name] - Sends the given episode to the user'
+    ]))
+
 bot.run(TOKEN)
