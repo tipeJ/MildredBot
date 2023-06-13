@@ -17,7 +17,7 @@ playback_ended_millis = None
 playback_file = None
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 # Scan file names in the directory
-audio_files = [f[:-4] for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
+audio_files = [f[:-4] for f in os.listdir(KNALLIS_DIRECTORY) if f.lower().endswith('.mp3')]
 audio_files.sort()
 
 @bot.event
@@ -123,7 +123,9 @@ async def join(ctx):
 # Lists the audio files
 @bot.command()
 async def list(ctx):
-    await ctx.send('List of episodes:\n' + '\n'.join(audio_files))
+    # Send txt file 'files.txt' to the chat as an attachment
+    file = discord.File('files.txt')
+    await ctx.send(file=file)
 
 # Sends the given file to the user
 # TODO: Find alternative way of sending, as audio files exceed the maximum allowed by discord.

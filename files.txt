@@ -1,0 +1,170 @@
+001 - Päävoitto
+002 - Hyvin Menee
+003 - Kruununjalokivet Varmoissa Käsissä
+004 - Keinottelua Huonekaluilla
+005 - Mikä Taulu
+006 - Sitruunoita
+007 - Soittakaa Enemmän
+008 - Rooli Näytelmässä
+009 - Työryhmä Pelastakaa Maanviljelys
+010 - Pariisin Kokous
+011 - Vaatimaton Pikku Viinipullo
+012 - Torpedo Arkin Alla
+013 - Suuri Väestonlaskenta
+014 - Ihan Tavallinen Päivä
+015 - Poropeukalot Big Benissä
+016 - Liukkaasti Lääkarille
+017 - Taiteellinen Hevosenleikki
+018 - Ministeriö Merihädässä
+019 - Ihmeellinen Vesitankki
+020 - Energiakriisi
+021 - Töllötintöppäily
+022 - Pötsihöttöa Ja Maksakakkaroita
+023 - Lamm Matkalla Maineeseen
+024 - Pulut Pulassa
+025 - Pandapaniikkia
+026 - Reipas Raparperiretki
+027 - Viimeinen Tahto Vie Miehen Läpi Harmaan Kiven
+028 - Alas Toitoi
+029 - Joka Toiselle Kuoppaa Kaivaa
+030 - Perästä Kuuluu
+031 - Avaruustutkimustiedotuskeskustoimisto
+032 - Anteeksi Maalaisuuteni
+033 - Tapio Tietää Kaiken
+034 - Teillä Tietymättömillä
+035 - Varsinaiset Vaalit
+036 - Epäviisas Siirto
+037 - Taikamatto
+038 - Sinä Vakooja
+039 - Oikeat Saappaat
+040 - Kaavamainen Kaavake
+041 - Jokseenkin Tärkeä Henkilö
+042 - Ministeriön Miehet Villissä Lännessä
+043 - Lammin Harharetki
+044 - Ministeriön Miehet Etelämerellä
+045 - Ketjureaktio
+046 - Energiaa Etsimässä
+047 - Koneaivo Koheltaa
+048 - Poissa Raiteilta
+049 - Villaa Ylle
+050 - Karhunpalvelus
+051 - Arvaamaton Arvonlisävero
+052 - Kirje Joulupukille
+053 - Huipulla Tuulee
+054 - Vaihtelu Virkistää
+055 - Päin Tähtiä
+056 - Sotaisa Sotku
+057 - Kyyditys New Yorkissa
+058 - Perheetön Pelikaani
+059 - Kaaos Kanavalla
+060 - Enkeli Lentää Liihottaa
+061 - Mildredin Koettelemukset
+062 - Laiva On Lastattu
+063 - Itsepäinen ja Itsenäinen
+064 - Prinssi Abdul
+065 - Vankilakundeja
+066 - Roskasakkia
+067 - Leipää ja Sirkushuveja
+068 - Maapallon Ympäri 80 Sekunnissa
+069 - Kemiallista Sodankäyntiä
+070 - Sotilasfarssi
+071 - Paljastuksia Puistossa
+072 - Ilmojen Valtiaat
+073 - Myrsky Teetonkassa
+074 - Piinapenkissä
+075 - Nauhallista Joulua
+076 - Sirkusta Kerrakseen
+077 - Nainen Kuin Nainen
+078 - Alimittaiset Nakit
+079 - Kultakuume
+080 - Veden Vallassa
+081 - Herrahissi
+082 - Ylämaan Tuulia
+083 - Tipu Tietokoneessa
+084 - Vaarallinen Tehtävä
+085 - Hirmu-Harryn Taistelu
+086 - Miinaoppia Aloittelijoille
+087 - Iloa Elämään
+088 - Nimetön Vihje
+089 - Vadelmavuori
+090 - Kovan Onnen Ruukku
+091 - Porno Pois
+092 - Ministeriön Häpeäpilkku
+093 - Putkeen menee
+094 - Mars Marsiin
+095 - Crum-joen Silta
+096 - Suoraan Lennosta
+097 - Päivä Kuninkaana
+098 - Kummitusjuna
+099 - Sirkus Papukaija
+100 - Myrskyn Merkit
+101 - Linturetki
+102 - Pois Postin Tieltä
+103 - Polskan Pyörteissä
+104 - Silppua
+105 - Kiinalaiset Housut
+106 - Eufrosyne-täti Auttaa
+107 - Puluitta Paras
+108 - Sinisalama
+109 - Fyi Faarao
+110 - Superpuljonki
+111 - Yötyössä
+112 - Sikamainen Ballerina
+113 - Sir Henry Syö Sanansa
+114 - Vuoto Virastossa
+115 - Oma Lehmä Ojassa 
+116 - Pastalasti
+117 - Rapakon Takana
+118 - Kuningas Yrjö Yllättää
+119 - Pyssyn Suusta
+120 - Nakkimakkaroita ja Kurttupiiraita
+121 - Moderni Ministeriö
+122 - Teekö Terveellistä
+123 - Rasvainen Juttu
+124 - Juustovaahtovanukkaan Seikkailut
+125 - Käyttövarma Torvi
+126 - Kadonneiden Puntien Arvoitus
+127 - Koirankujeita 
+128 - Piikkipaniikki
+129 - Vettä Väkevämpää
+130 - Potut Pottuina
+131 - Ryhmätyö ja Ystävyys
+132 - Kuka Tahansa Erehtyy
+133 - Öljykriisi
+134 - Älä Mainosta
+135 - Julistejupakka
+136 - Saarivaltakunta
+137 - Tapaus Psykiatri
+138 - Sori Shakespeare
+139 - Uuden Vuosituhannen Airut
+140 - Uusi Lentokenttä
+141 - Lamm Lasaretissa
+142 - Murha Ministeriössä
+143 - Kiinteistökieputus
+144 - Joukkojensiirtoruljanssi
+145 - Vahtimestari Vauhdissa
+146 - Vapaaehtoiset
+147 - Kummitusjuttu
+148 - Kirjailijan Kivinen Tie
+149 - Autoilun Uusi Aika
+150 - Ensirakastajan Ensiaskeleet
+151 - Tilaa Huipulla
+152 - Hampaasta Miestä
+153 - Kasvihuoneilmiö
+154 - Maalaisilmaa
+155 - Kuntoiluintoilua
+156 - Leikkipuiston Kohtalonhetket
+157 - Kukkona tunkiolla
+158 - Sorrettujen ystävä
+159 - Talvinen tarina
+160 - Myllystä Allikkoon
+161-  Riita poikki
+162 - Siivekkäät Ystävämme
+163 - Hei me lennetään
+164 - Terveenä töihin
+165 - Helunan tähtihetki
+166 - Outo vieras
+167 - Pikku Vieras
+168 - Outoa Ystävällisyyttä
+169 - Tositarinoita
+170 - Lehdistön mahti
