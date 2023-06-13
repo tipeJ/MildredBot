@@ -100,20 +100,25 @@ async def leave(ctx):
     voice = utils.get(bot.voice_clients, guild=ctx.guild)
     if voice and voice.is_connected():
         await voice.disconnect()
+        global playback_file
         playback_file = None
 
 # Joins the current voice channel
 @bot.command()
 async def join(ctx):
-    # Leave
-    voice = utils.get(bot.voice_clients, guild=ctx.guild)
-    start_time = None
-    if voice and voice.is_connected():
-        await voice.disconnect()
-        playback_ended_millis = int(round(time.time() * 1000))
-        start_time = (playback_ended_millis - playback_started_millis) / 1000
-    # Join
-    await _playFile(ctx, playback_file, start_time)
+    # Check if playing or not
+    if playback_file is None:
+        await ctx.send("ERROR: No last played file available")
+    else:
+        # Leave
+        voice = utils.get(bot.voice_clients, guild=ctx.guild)
+        start_time = None
+        if voice and voice.is_connected():
+            await voice.disconnect()
+            playback_ended_millis = int(round(time.time() * 1000))
+            start_time = (playback_ended_millis - playback_started_millis) / 1000
+        # Join
+        await _playFile(ctx, playback_file, start_time)
 
 # Lists the audio files
 @bot.command()
