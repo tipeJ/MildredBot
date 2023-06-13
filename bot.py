@@ -1,6 +1,7 @@
 import os
 from typing import Type
 import discord
+import time
 from discord import utils
 from dotenv import load_dotenv
 from discord.ext import commands
@@ -11,6 +12,9 @@ load_dotenv()
 TOKEN = os.environ.get('DISCORD_OAUTH_TOKEN')
 KNALLIS_DIRECTORY = os.environ.get('KNALLIS_DIRECTORY')
 
+playback_started_millis = None
+playback_ended_millis = None
+playback_file = None
 bot = commands.Bot(command_prefix='!', intents=discord.Intents.all())
 # Scan file names in the directory
 audio_files = [f[:-4] for f in os.listdir(KNALLIS_DIRECTORY) if f.endswith('.mp3')]
@@ -20,7 +24,7 @@ audio_files.sort()
 async def on_ready():
     print(f'{bot.user.name} has connected to Discord!')
 
-async def _playFile(ctx, file):
+async def _playFile(ctx, file, start_time=None):
     path = f'{KNALLIS_DIRECTORY}/{file}.mp3'
     is_file = os.path.isfile(path)
     if not is_file:
@@ -42,7 +46,15 @@ async def _playFile(ctx, file):
             # Play the file 
             await ctx.send(f'Playing {file}')
             voice = utils.get(bot.voice_clients, guild=ctx.guild)
-            await voice.play(discord.FFmpegPCMAudio(path))
+            if start_time is not None:
+                before_options = f'-ss {start_time}'
+            else:
+                before_options = None
+            global playback_started_millis
+            global playback_file
+            playback_started_millis = int(round(time.time() * 1000))
+            playback_file = file
+            voice.play(discord.FFmpegPCMAudio(path, before_options=before_options))
         else:
             await ctx.send("ERROR: You are not in a voice channel")
 
@@ -88,6 +100,20 @@ async def leave(ctx):
     voice = utils.get(bot.voice_clients, guild=ctx.guild)
     if voice and voice.is_connected():
         await voice.disconnect()
+        playback_file = None
+
+# Joins the current voice channel
+@bot.command()
+async def join(ctx):
+    # Leave
+    voice = utils.get(bot.voice_clients, guild=ctx.guild)
+    start_time = None
+    if voice and voice.is_connected():
+        await voice.disconnect()
+        playback_ended_millis = int(round(time.time() * 1000))
+        start_time = (playback_ended_millis - playback_started_millis) / 1000
+    # Join
+    await _playFile(ctx, playback_file, start_time)
 
 # Lists the audio files
 @bot.command()
